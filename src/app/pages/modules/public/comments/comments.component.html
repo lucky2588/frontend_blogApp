@@ -1,6 +1,54 @@
-<p>comments works!</p>
+
+     <!--Section: Comments-->
+     <section class="mb-3">
+      <p class="text-center"><strong>Comments: {{(this.service.items$ | async)!.length}}</strong></p>
+
+      <!-- Comment -->
+      <ng-container *ngIf="(this.service.items$ | async)!.length < 1">
+        <p class="text-center"> Not Comment for Blog </p>
+    </ng-container>
+
+      <div class="row mb-6">
+        <ng-container *ngFor="let items of this.service.items$ | async">
+          <div class="col-2 custom-img">
+            <img  [src]= 'items.avatar' alt=""  class="size-img"/>
+          </div>
+
+          <div class="col-10">
+            <p class="mb-2"><strong>{{ items.username}}</strong></p>
+            <p class="mb-2">{{ coversDate(items.createdDate)  | date: 'dd/MM/yyyy' }} </p>
+            <p>
+                {{ items.content }}
+            </p>
+          </div>
+
+      </ng-container>
+
+      </div>
 
 
-<!-- <mat-form-field class="example-full-width">
-  <textarea matInput placeholder="Leave a comment"></textarea>
- </mat-form-field> -->
+
+
+    </section>
+    <!--Section: Comments-->
+
+    <!--Section: Reply-->
+    <section>
+      <p class="text-center"><strong>Leave Your Comment</strong></p>
+      <form  [formGroup]="formGroup" (ngSubmit)="pushComment()">
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <textarea class="form-control" id="form4Example3" rows="4" formControlName="content"></textarea>
+          <show-validation-messages
+          [control]="formGroup.get('content')!"
+        ></show-validation-messages>
+          <label class="form-label" for="form4Example3">Text</label>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">
+          Publish
+        </button>
+      </form>
+    </section>
+    <!--Section: Reply-->

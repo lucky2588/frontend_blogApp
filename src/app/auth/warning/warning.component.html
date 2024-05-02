@@ -1,0 +1,19 @@
+<div class="modal-body">
+  <ng-container>
+      <div class="col-12 text-center img-delete">
+      </div>
+      <h2 class="font-bold text-center"><i class="fa fa-warning" aria-hidden="true"></i></h2>
+      <p class="text-center fa-warning" style="word-break: break-all">  {{ title }}  !</p>
+  </ng-container>
+</div>
+
+<div class="modal-footer">
+  <div class="col-12 text-center">
+      <button type="button" class="btn btn-light btn-elevate mr-1" (click)="modal.dismiss()">
+          Close
+      </button>&nbsp;
+      <button type="button" class="btn btn-primary btn-elevate" (click)="native()">
+          Login
+      </button>
+  </div>
+</div>

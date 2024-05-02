@@ -80,10 +80,13 @@ export class BlogDetailComponent implements OnInit {
     // this.loadData(); // set Value for Form
     this.service.getDetail(this.id).subscribe((next)=>{
        this.blog = next;
-       this.categories = this.blog.categories.map((e:any) => e.id)
-       const listImg = this.blog.categories.map((e:any) => e.thumbail)
+       this.categories = this.blog.categories.map((e:any) => e.id) // get value to filter categories
+       const listImg = this.blog.categories.map((e:any) => e.thumbail) // get img to display 
        this.showCategories =  listImg;
-    }
+    },
+     (err)=>{
+      this.router.navigate(['./not-found/nativage']); // native Not found
+     }
     )
 }
 

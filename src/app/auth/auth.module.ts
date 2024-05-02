@@ -20,6 +20,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HasPermissionDirective } from '../shared/directive/has-permission.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WarningComponent } from './warning/warning.component';
 
 
 // list Componet + Module Auth --> Login + Authentication + Authozire + Resgiter
@@ -29,6 +30,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegisterComponent,
     RestPasswordComponent,
+    WarningComponent,
   ],
   imports: [
     AuthRoutingModule, //import Routing,

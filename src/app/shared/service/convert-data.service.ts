@@ -6,7 +6,7 @@ import * as moment from "moment";
 })
 export class ConvertDataService {
 
-  constructor() {}
+  constructor() { }
 
   getDateForEditFromMoment(date: moment.Moment, format = 'YYYY/MM/DD HH:mm') {
     return date ? new Date(moment(date).format(format)) : null;
@@ -17,29 +17,27 @@ export class ConvertDataService {
   // }
 
 
-  getDateFormLocalDate(dateArray:any[]){
+  getDateFormLocalDate(dateArray: any[]) {
     const dateObject = new Date(dateArray[0], dateArray[1] - 1, dateArray[2])
-     return dateObject;
+    return dateObject;
   }
 
-  getDateStringFormLocalDate(dateArray:any[]){
+  getDateStringFormLocalDate(dateArray: any[]) {
     const dateObject = new Date(dateArray[0], dateArray[1] - 1, dateArray[2])
-    console.log(dateObject)
-
     const year = dateObject.getFullYear();
-const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Thêm số 0 ở đầu nếu tháng chỉ có một chữ số
-const day = dateObject.getDate().toString().padStart(2, '0'); // Thêm số 0 ở đầu nếu ngày chỉ có một chữ số
+    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Thêm số 0 ở đầu nếu tháng chỉ có một chữ số
+    const day = dateObject.getDate().toString().padStart(2, '0'); // Thêm số 0 ở đầu nếu ngày chỉ có một chữ số
 
-// Ghép các thành phần lại với nhau
-const formattedDate = `${year}/${month}/${day}`;
+    // Ghép các thành phần lại với nhau
+    const formattedDate = `${year}/${month}/${day}`;
 
-console.log(formattedDate); // Kết quả: '2024/04/05'
+    console.log(formattedDate); // Kết quả: '2024/04/05'
   }
 
 
 
-//   covertMomentFromDate(value : Date){
-//      myMoment: moment. = moment(value);
-//   }
-// }
+  //   covertMomentFromDate(value : Date){
+  //      myMoment: moment. = moment(value);
+  //   }
+  // }
 }

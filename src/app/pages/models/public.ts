@@ -22,3 +22,14 @@ export interface CategoryItem {
 }
 
 
+
+export interface CommentDetail {
+  id : number,
+  content : string,
+  createdDate : string,
+  username : string,
+  avatar: string
+}
+
+
+
