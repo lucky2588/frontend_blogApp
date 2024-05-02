@@ -1,0 +1,23 @@
+.custom-modal-create{
+  height: 700px !important;
+}
+
+.is-valid {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLhskW7o8UB4SqQT4hAHrN5ix7V5mAFKGuZaW5K4cGtA&s");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+
+
+.not-valid {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8ZNXO_r4N4sFrAmYO0rCwcx6RRxvoSy0YiFNsG4CqQ&s");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+

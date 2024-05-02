@@ -1,0 +1,62 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
+  .card-registration .select-arrow {
+  top: 13px;
+  }
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #f093fb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+    }
+
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+    .custom-selector{
+      margin-right: 160px !important;
+      margin-bottom: 60px !important;
+    }
+    .custom-btn{
+      margin-left: 300px !important;
+      margin-bottom: 60px !important;
+    }
+.custom-input-birthday{
+  width: 250px !important;
+}
+
+
+.input-group .input-group-text {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .input-group-text i {
+  display: inline-block;
+  width: 1.5rem; /* Điều chỉnh kích thước icon tùy thuộc vào yêu cầu của bạn */
+  height: 1.5rem; /* Điều chỉnh kích thước icon tùy thuộc vào yêu cầu của bạn */
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdFVNm53rnPeMZthKlnDMynUZIgxIFlw0RJo4Ah2IrVQ&s');
+  background-size: cover;
+}
+
+
+.custom-form-resgitar{
+  background-image: url('https://images.ctfassets.net/co0pvta7hzrh/1HOajBVHsh7xunfUnjpDNE/c94d271e8f90a6bf6016fc1d275d7a74/e_commerce_registration_form_template_thumb.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

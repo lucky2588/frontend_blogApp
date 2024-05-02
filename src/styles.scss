@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+
+
+
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+
+
+// if you'd like to use it without importing all of bootstrap it requires
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// boostrap 5
+@import 'ngx-toastr/toastr-bs5-alert';
+
+// for quill config => https://www.npmjs.com/package/ngx-quill/v/23.0.0
+
+@import '~quill/dist/quill.bubble.css';
+// or
+@import '~quill/dist/quill.snow.css';
+
+.form-control{
+  border:  1px solid #ddd !important;
+ }
+
+
+
+
+ .is-valid {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLhskW7o8UB4SqQT4hAHrN5ix7V5mAFKGuZaW5K4cGtA&s");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+
+.valid{
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://www.pngfind.com/pngs/m/466-4665912_download-png-not-valid-icon-png-transparent-png.png");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+
+

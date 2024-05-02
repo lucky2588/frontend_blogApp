@@ -1,0 +1,200 @@
+<div class="customer-title d-flex justify-content-between align-items-center mb-3">
+  <h4 class="text-center">Profile Info</h4>
+</div>
+<main class="main">
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right custom-avatar-img">
+        <div class="col-lg-8">
+          <div class="avatar-container cursor-pointer d-flex justify-content-center align-items-center"
+            onclick="document.getElementById('avatarImage').click()">
+            <div class="image-container">
+              <img *ngIf="imageAvatar" style="max-height: 100%; max-width: 100%" [src]="imageAvatar" alt="" />
+            </div>
+            <!-- Nút chỉ hiển thị khi hover vào ảnh hoặc không có ảnh -->
+            <div class="overlay" *ngIf="!imageAvatar">
+              <button type="button" class="btn btn-primary btn-custom-one">
+                Update Avatar
+              </button>
+            </div>
+            <div *ngIf="imageAvatar" (mouseenter)="onHoverThumbnail()" (mouseleave)="onLeaveThumbnail()"
+              class="w-100 h-100 position-absolute d-flex justify-content-center align-items-center"
+              [ngClass]="{ 'img-cover-bg': hoverImg }" style="top: 0; left: 0; z-index: 100">
+              <div class="row" [ngStyle]="{ display: hoverImg ? 'unset' : 'none' }">
+                <div class="col-12 text-center">
+                  <button type="button" class="btn btn-primary mb-2">
+                    Upload Image
+                  </button>
+                </div>
+              </div>
+            </div>
+            <input style="display: none" id="avatarImage" type="file" class="form-control" formControlName="anhDaiDien"
+              (change)="onSelectThumbnailImage($event)" accept=".apng,.ico,.cur,.jpg,.jpeg,.pjpeg,.jfif,.pjg,.png" />
+          </div>
+          <div *ngIf="imageAvatar">
+            <button type="button" [disabled]="imageAvatar === undefined ? true : false" [ngStyle]="{
+                cursor: imageAvatar === undefined ? 'not-allowed' : 'pointer'
+              }" class="btn btn-danger btn-custom-two text-center" (click)="deleteScreenShot()">
+              Xóa
+            </button>
+          </div>
+          <label style="
+              color: #f64e60;
+              display: block;
+              font-size: 0.9rem;
+              font-weight: 400;
+              margin-top: 0.25rem;
+            ">{{ imageError.errMessage }}</label>
+        </div>
+      </div>
+      <!--Begin form  -->
+      <form class="custom-form-info col-md-5 border-right" [formGroup]="updateForm" (ngSubmit)="save()">
+        <div class="form-group p-3 py-5">
+          <div class="row mt-3 form-outline">
+            <div class="col-md-12">
+              <label class="labels"> Email </label>
+              <input type="text" id="fullname" class="form-control form-control-lg" formControlName="email" />
+            </div>
+          </div>
+
+          <div class="row mt-3 form-outline">
+            <div class="col-md-12">
+              <label class="labels"> Username </label>
+              <input type="text" id="fullname"
+              class="form-control form-control-lg" formControlName="username"/>
+            </div>
+          </div>
+
+
+          <div class="row mt-3 form-outline">
+            <label class="form-label" for="form3Example9">Birthday Date</label>
+            <div class="col-md-6 mb-4">
+              <div class="input-group form-outline">
+                <input
+                  [maxDate]="maxDate"
+                  [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+                  type="text"
+                  class="form-control form-control-lg display-calendar"
+                  (bsValueChange)="onValueChange($event)"
+                  #dp="bsDatepicker"
+                  bsDatepicker
+                  formControlName="birthday"/>
+                <show-validation-messages [control]="updateForm.get('birthdayDate')!"></show-validation-messages>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4 cumstom-gender">
+                <label class="form-label" for="form3Example9">Gender</label>
+                <ng-select formControlName="sex"
+                  [items]="gender"
+                  bindLabel="labelName"
+                  bindValue="id"
+                  [(ngModel)]="selectGender">
+                </ng-select>
+                <show-validation-messages [control]="updateForm.get('birthdayDate')!"></show-validation-messages>
+            </div>
+
+          </div>
+
+
+          <div class="row mt-3 form-outline">
+            <div class="col-md-12">
+              <label class="labels"> Fullname </label>
+              <input type="text" id="fullname" class="form-control form-control-lg"
+              [class.is-valid]="isControlValid('name')"
+              [class.not-valid]="isControlNotValid('name')"
+              formControlName="name" />
+              <show-validation-messages [control]="updateForm.get('name')!"></show-validation-messages>
+            </div>
+          </div>
+          <div class="row mt-3 form-outline">
+            <div class="col-md-12">
+              <label class="labels"> Address </label>
+              <input type="text" id="fullname"
+              [class.is-valid]="isControlValid('address')"
+              [class.not-valid]="isControlNotValid('address')"
+              class="form-control form-control-lg" formControlName="address"/>
+            </div>
+          </div>
+          <show-validation-messages [control]="updateForm.get('address')!"></show-validation-messages>
+
+          <div class="row mt-3 form-outline">
+            <div class="col-md-12">
+              <label class="labels"> Msisdn </label>
+              <input type="text" id="fullname" class="form-control form-control-lg"
+              [class.is-valid]="isControlValid('msisdn')"
+              [class.not-valid]="isControlNotValid('msisdn')"
+              formControlName="msisdn"/>
+            </div>
+          </div>
+          <show-validation-messages [control]="updateForm.get('msisdn')!"></show-validation-messages>
+
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button"
+            [disabled]="updateForm.invalid || !updateForm.touched"
+             type="submit">
+              Save Profile
+            </button>
+          </div>
+        </div>
+      </form>
+
+
+      <form class="col-md-4" [formGroup]="changePasswordForm"
+      (ngSubmit)="saveChangePassword()">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center experience">
+              <span> Change Password  </span>
+              <button class="btn btn-primary profile-button"
+               type="submit"
+               [disabled]="changePasswordForm.invalid" >
+                Save
+              </button>
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">  Password Old </label>
+              <input
+               type="password"
+               class="form-control form-control-lg"
+               formControlName="passwordOld"
+               value="" />
+               <show-validation-messages
+               [control]="changePasswordForm.get('passwordOld')!"
+             ></show-validation-messages>
+            </div>
+            <br />
+            <div class="col-md-12">
+              <label class="labels"> Password New </label>
+                 <input
+              type="password"
+              id="form3Example90"
+              class="form-control form-control-lg"
+              formControlName="password"
+              value="" />
+              <show-validation-messages
+              [control]="changePasswordForm.get('password')!"
+            ></show-validation-messages>
+            </div>
+            <div class="col-md-12">
+              <label class="labels"> Confirm Password </label>
+              <input
+              type="password"
+              id="form3Example90"
+              class="form-control form-control-lg"
+              formControlName="reTypePassword"
+              value="" />
+              <show-validation-messages
+              [control]="changePasswordForm.get('reTypePassword')!"
+            ></show-validation-messages>
+            </div>
+          </div>
+
+      </form>
+
+
+
+
+
+    </div>
+  </div>
+</main>

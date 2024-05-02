@@ -1,0 +1,48 @@
+
+  <div *ngIf="isHide" class="sidebar">
+    <div class="logo d-flex justify-content-center align-items-center">
+        <h3 class="fs-4 text-white">FOR ADMIN</h3>
+    </div>
+    <div class="menu">
+      <div class="menu-item">
+        <h5>
+            <span class="d-inline-block me-1"><a routerLink="/home" class="fa-solid fa-home"></a></span>
+            Home
+        </h5>
+    </div>
+        <div class="menu-item">
+            <h5>
+              <a routerLink="/manage/blog" class="fa-solid fa-blog"><span class="d-inline-block me-1">Manage Blog</span>
+              </a>
+
+            </h5>
+            <ul class="m-0 p-0">
+                <li><a routerLink="/manage/blog" >List Blog</a></li>
+                <li><a routerLink="/manage/blog" >Report Blog</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <h5>
+                <span class="d-inline-block me-1"><i class="fa-solid fa-category"></i></span>
+                Manage Category
+            </h5>
+            <ul class="m-0 p-0">
+                <li><a href="#">List Category</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <h5>
+                <span class="d-inline-block me-1"><i class="fa-solid fa-user"></i></span>
+                Manage User
+            </h5>
+            <ul class="m-0 p-0">
+                <li><a href="#">List User</a></li>
+                <li><a href="#">Create User</a></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+
+
+

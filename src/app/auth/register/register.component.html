@@ -1,0 +1,270 @@
+<section class="h-80 w-60 custom-form-resgitar">
+  <div class="container py-3 h-80">
+    <div class="row d-flex justify-content-center align-items-center h-80">
+      <div class="col">
+        <div class="card card-registration my-3">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR78NYtsG6zgDnuaa27192NlwLCDYCq37oytLa6b_Z7hw&s"
+                alt="Sample photo"
+                class="img-fluid"
+                style="
+                  border-top-left-radius: 0.25rem;
+                  border-bottom-left-radius: 0.25rem;"
+              />
+            </div>
+            <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+              <div class="col-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Registration User</h3>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label  for="firstName">First Name </label>
+                        <label style="margin-left: 3px;color: red;">*</label>
+                        <input
+                          type="text"
+                          id="firstName"
+                          class="form-control form-control-lg"
+                          formControlName="firstName"
+                        />
+
+                        <show-validation-messages
+                          [control]="registrationForm.get('firstName')!"
+                        ></show-validation-messages>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <label  for="lastName">Last Name</label>
+                        <label style="margin-left: 3px;color: red;">*</label>
+                        <input
+                          type="text"
+                          id="firstName"
+                          class="form-control form-control-lg"
+                          formControlName="lastName" />
+                        <show-validation-messages
+                          [control]="registrationForm.get('lastName')!"
+                        ></show-validation-messages>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row custom-input-birthday">
+                    <label  for="lastName">Birthday</label>
+                    <div class="input-group">
+                      <input
+                        [maxDate]="maxDate"
+                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+                        type="text"
+                        class="form-control form-control-lg"
+                        (bsValueChange)="onValueChange($event)"
+                        #dp="bsDatepicker"
+                        bsDatepicker
+                        [bsValue]="bsValue"
+                        formControlName="birthdayDate"
+                      />
+                      <span class="input-group-text">
+                        <i class="fa-solid fa-camera"></i>
+                      </span>
+                      <show-validation-messages
+                      [control]="registrationForm.get('birthdayDate')!"
+                    ></show-validation-messages>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-8 mb-6">
+                      <h6 class="mb-2 pb-1">Gender</h6>
+
+                      <div class="form-check form-check-inline">
+                        <input
+                        [(ngModel)]="selectedGender"
+                        name="inlineRadioOptions"
+                          class="form-check-input"
+                          type="radio"
+                          id="maleGender"
+                          formControlName="gender"
+                          value="male"
+                          checked
+                        />
+                        <label class="form-check-label" for="femaleGender"
+                          >Male</label
+                        >
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input
+                        [(ngModel)]="selectedGender"
+                          class="form-check-input"
+                          type="radio"
+                        formControlName="gender"
+                          name="inlineRadioOptions"
+
+                          id="femaleGender"
+
+                          value="female"
+                        />
+                        <label class="form-check-label" for="maleGender"
+                          >Female</label
+                        >
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input
+                        formControlName="gender"
+                        [(ngModel)]="selectedGender"
+                        name="inlineRadioOptions"
+                          class="form-check-input"
+                          type="radio"
+                          value="other"
+                        />
+                        <label class="form-check-label" for="maleGender"
+                          >Other</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <label  for="emailAddress">Email</label>
+                        <label style="margin-left: 3px;color: red;">*</label>
+                        <input
+                          type="email"
+                          id="emailAddress"
+                          class="form-control form-control-lg"
+                          formControlName="email"/>
+                        <show-validation-messages
+                          [control]="registrationForm.get('email')!"
+                        ></show-validation-messages>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline">
+                        <label  for="emailAddress">Phone Number</label>
+                        <label style="margin-left: 3px;color: red;">*</label>
+                        <input
+                          type="tel"
+                          id="phoneNumber"
+                          formControlName="msisdn"
+                          class="form-control form-control-lg"/>
+                        <show-validation-messages
+                          [control]="registrationForm.get('msisdn')!"
+                        ></show-validation-messages>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                      <label class="form-label" for="form3Example9">Choose The City</label>
+                      <label style="margin-left: 3px;color: red;">*</label>
+                      <ng-select formControlName="selectedCity" (clear)="clearAddress()"
+                        [items]="cities" (change)="getDistrict($event)"
+                        bindLabel="labelName"
+                        bindValue="id"
+                        [(ngModel)]="selectedCity">
+                      </ng-select>
+                      <label class="form-label" for="form3Example9">Select District</label>
+                      <label style="margin-left: 3px;color: red;">*</label>
+                      <ng-select formControlName="selectedDistrinct"
+                        [items]="districtFiltered" (change)="getWard($event)"
+                        bindLabel="labelName"
+                        bindValue="id"
+                        [(ngModel)]="selectedDistrinct">
+                      </ng-select>
+                      <label class="form-label" for="form3Example9">Select Ward</label>
+                      <label style="margin-left: 3px;color: red;">*</label>
+                      <ng-select formControlName="selectedWard"
+                        [items]="wardFiltered" (change)="setAddress($event)"
+                        bindLabel="labelName"
+                        bindValue="id"
+                        [(ngModel)]="selectedWard">
+                      </ng-select>
+                    </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="">Address</label >
+                      <label style="margin-left: 3px;color: red;">*</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-lg"
+                      formControlName="address"
+
+                      [ngModel]="this.fullAddress"
+                    />
+                    <show-validation-messages
+                      [control]="registrationForm.get('address')!"
+                    ></show-validation-messages>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label  for="form3Example9"
+                    >Username</label
+                  >
+                  <label style="margin-left: 3px;color: red;">*</label>
+                    <input
+                      type="text"
+                      id="form3Example9"
+                      class="form-control form-control-lg"
+                      formControlName="username"/>
+                    <show-validation-messages
+                      [control]="registrationForm.get('username')!"
+                    ></show-validation-messages>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form3Example90">Password</label>
+                    <label style="margin-left: 3px;color: red;">*</label>
+                    <input
+                      type="password"
+                      id="form3Example90"
+                      class="form-control form-control-lg"
+                      formControlName="password"
+                      />
+                    <show-validation-messages
+                      [control]="registrationForm.get('password')!"
+                    ></show-validation-messages>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label  for="form3Example99" >Retype Password</label>
+                    <label style="margin-left: 3px;color: red;">*</label>
+                    <input
+                      type="password"
+                      formControlName="reTypePassword"
+                      id="form3Example99"
+                      class="form-control form-control-lg"/>
+                    <show-validation-messages
+                      [control]="registrationForm.get('reTypePassword')!"
+                    ></show-validation-messages>
+                  </div>
+                  <div class="d-flex justify-content-end pt-3">
+                    <button
+                      (click)="resetInfo()"
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-light btn-lg"
+                    >
+                      Reset all
+                    </button>
+                    <button
+                      type="submit"
+                      [disabled]="registrationForm.invalid"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-warning btn-lg ms-2"> Register </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

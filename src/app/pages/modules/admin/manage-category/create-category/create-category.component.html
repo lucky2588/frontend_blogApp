@@ -1,0 +1,93 @@
+<div class="modal-content custom-modal-create">
+  <div style="display: unset !important" class="modal-header">
+    <div class="modal-title h4" id="example-modal-sizes-title-lg">
+      <div class="d-flex justify-content-between">
+        <div>
+          <label style="font-weight: bold"> Create Category</label>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary-outline p-0"
+            (click)="modal.dismiss()" >
+            <i style="color: black" class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+  class="overlay overlay-block cursor-default modal-body"
+  style="min-height: 350px"   scrollable="true">
+  <ng-container *ngIf="formGroup">
+    <form
+      action="#"
+      class="form form-label-right"
+      [formGroup]="formGroup" (ngSubmit)="save()"
+      autocomplete="off">
+      <div class="form-group row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="d-flex flex-row">
+                <label class="form-label">Name</label>
+              </div>
+              <input
+              [class.is-valid]="isControlValid('labelName')"
+              [class.not-valid]="isControlNotValid('labelName')"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder=""
+                autocomplete="off"
+                formControlName="labelName"/>
+            </div>
+            <show-validation-messages [control]="formGroup.get('labelName')!"></show-validation-messages>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-12">
+            <label>Description</label>
+            <textarea class="form-control" name="moTa" formControlName="description"
+            [class.is-valid]="isControlValid('description')"
+            [class.not-valid]="isControlNotValid('description')"
+            ></textarea>
+            <show-validation-messages [control]="formGroup.get('description')!"></show-validation-messages>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-12">
+          <label>Thumbail</label>
+          <textarea class="form-control"  formControlName="thumbail"
+          [class.is-valid]="isControlValid('thumbail')"
+          [class.not-valid]="isControlNotValid('thumbail')" ></textarea>
+          <show-validation-messages [control]="formGroup.get('thumbail')!"></show-validation-messages>
+
+      </div>
+  </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-light btn-elevate mr-2" (click)="modal.dismiss()">
+          Đóng
+      </button>
+
+      <button type="submit" class="btn btn-primary btn-elevate" [disabled]="formGroup.invalid">
+        Save
+      </button>
+
+    </div>
+    </form>
+
+  </ng-container>
+
+</div>
+</div>
+
+
+
+
+
+
+

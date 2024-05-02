@@ -1,0 +1,143 @@
+<div class="modal-content custom-modal">
+  <div style="display: unset !important" class="modal-header">
+    <div class="modal-title h4" id="example-modal-sizes-title-lg">
+      <div class="d-flex justify-content-between">
+        <div>
+          <label style="font-weight: bold"> {{id == 0 ? 'Create Blog' : 'Update Blog'}}</label>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary-outline p-0" (click)="modal.dismiss()">
+            <i style="color: black" class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay overlay-block cursor-default modal-body" style="min-height: 550px" scrollable="true">
+    <ng-container *ngIf="formGroup">
+      <div class="row custom-body">
+        <div class="col-md-5 custom-avatar-img">
+          <div class="col-lg-3">
+            <div class="avatar-container cursor-pointer d-flex justify-content-center align-items-center"
+              onclick="document.getElementById('avatarImage').click()">
+              <div class="image-container">
+                <img *ngIf="imageAvatar" style="max-height: 100%; max-width: 100%" [src]="imageAvatar" alt="" />
+              </div>
+              <!-- Nút chỉ hiển thị khi hover vào ảnh hoặc không có ảnh -->
+              <div class="overlay" *ngIf="!imageAvatar">
+                <button type="button" class="btn btn-primary btn-custom-one">
+                  {{id == 0 ? 'Create Image' : 'Update Image'}}
+                </button>
+              </div>
+              <div *ngIf="imageAvatar" (mouseenter)="onHoverThumbnail()" (mouseleave)="onLeaveThumbnail()"
+                class="w-100 h-100 position-absolute d-flex justify-content-center align-items-center"
+                [ngClass]="{ 'img-cover-bg': hoverImg }" style="top: 0; left: 0; z-index: 100">
+                <div class="row" [ngStyle]="{ display: hoverImg ? 'unset' : 'none' }">
+                  <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary mb-2">
+                      Upload Image
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <input style="display: none" id="avatarImage" type="file" class="form-control"
+                formControlName="anhDaiDien" (change)="onSelectThumbnailImage($event)"
+                accept=".apng,.ico,.cur,.jpg,.jpeg,.pjpeg,.jfif,.pjg,.png" />
+            </div>
+            <div *ngIf="imageAvatar">
+              <button type="button" [disabled]="imageAvatar === undefined ? true : false" [ngStyle]="{
+                cursor: imageAvatar === undefined ? 'not-allowed' : 'pointer'
+              }" class="btn btn-danger btn-custom-two text-center" (click)="deleteScreenShot()">
+                Remove
+              </button>
+            </div>
+            <label style="
+              color: #f64e60;
+              display: block;
+              font-size: 0.9rem;
+              font-weight: 400;
+              margin-top: 0.25rem;
+            ">{{ imageError.errMessage }}</label>
+          </div>
+        </div>
+      </div>
+      <form action="#" class="form form-label-right" [formGroup]="formGroup" (ngSubmit)="save()" autocomplete="off">
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <div class="d-flex flex-row">
+              <label class="form-label">Title</label>
+              <label style="margin-left: 3px;color: red;">*</label>
+            </div>
+            <input type="text" class="form-control form-control-lg"
+            [class.is-valid]="isControlValid('title')"
+            [class.not-valid]="isControlNotValid('title')"
+            placeholder="" autocomplete="off"
+              formControlName="title" />
+              <show-validation-messages [control]="formGroup.get('title')!"></show-validation-messages>
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex flex-row">
+              <label class="form-label">Active</label>
+              <label style="margin-left: 3px;color: red;">*</label>
+            </div>
+            <ng-select formControlName="active" [items]="access" bindLabel="labelValue" bindValue="id"
+              [(ngModel)]="selectAccess" >
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-6">
+            <div class="d-flex flex-row">
+              <label> Author</label>
+              <label style="margin-left: 3px;color: red;">*</label>
+            </div>
+            <input type="text" class="form-control form-control-lg " placeholder="" formControlName="author"
+              autocomplete="off" />
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex flex-row">
+              <label> Create Date </label>
+            </div>
+            <input type="text" class="form-control form-control-lg" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+              #dp="bsDatepicker" bsDatepicker placeholder="" formControlName="created_date" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-12">
+            <label>Content</label>
+            <label style="margin-left: 3px;color: red;">*</label>
+            <textarea
+            [class.is-valid]="isControlValid('content')"
+            [class.not-valid]="isControlNotValid('content')"
+            class="form-control" name="moTa" formControlName="content"></textarea>
+            <show-validation-messages [control]="formGroup.get('content')!"></show-validation-messages>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <label>Description</label>
+            <label style="margin-left: 3px;color: red;">*</label>
+            <ckeditor
+            [editor]="Editor" formControlName="description"></ckeditor>
+            <show-validation-messages [control]="formGroup.get('description')!"></show-validation-messages>
+          </div>
+        </div>
+        <app-categories (sendCategories)="getCategories($event)" [listCategory]="categories" [showCategoris]="showCategories" [disableCategory]="false"></app-categories>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-light btn-elevate mr-2" (click)="modal.dismiss()">
+            Cancle
+          </button>
+          <button type="submit" class="btn btn-primary btn-elevate" [disabled]="formGroup.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </ng-container>
+
+
+
+
+  </div>
+</div>

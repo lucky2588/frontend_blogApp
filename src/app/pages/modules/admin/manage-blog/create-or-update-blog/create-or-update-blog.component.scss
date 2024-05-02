@@ -1,0 +1,156 @@
+body {
+  background: rgb(99, 39, 120)
+}
+
+.custom-body{
+  margin-top: -75px !important;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #BA68C8
+}
+
+.profile-button {
+  background: rgb(99, 39, 120);
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: #682773
+}
+
+.profile-button:focus {
+  background: #682773;
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #682773;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #682773;
+  cursor: pointer
+}
+
+.labels {
+  font-size: 11px
+}
+
+.add-experience:hover {
+  background: #BA68C8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #BA68C8
+}
+
+
+
+.bg-blue {
+  background-color: #1E90FF;
+}
+
+
+.avatar-container {
+height: 200px;
+width: 200px;
+position: relative;
+border-radius: 4px;
+border: 1px solid rgba(0, 0, 0, 0.2);
+background-color:#F5F5F5;
+}
+
+.avata-update-button {
+height: 24px;
+width: 24px;
+position: absolute;
+top: -12px;
+right: -12px;
+border: 1px solid rgba(0, 0, 0, 0.2);
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+}
+.custom-name-avatar{
+margin-left: 10px !important;
+}
+
+.btn-custom-two{
+margin-left: 220px !important;
+margin-top : -45px !important;
+}
+.btn-custom-one{
+height: 40px !important;
+width: 160px !important;
+}
+
+
+// xử lí btn khi hover
+.image-container {
+position: relative;
+display: inline-block;
+}
+
+.button-img {
+position: absolute !important;
+top: 50%;
+left: 50%;
+display: none !important;
+z-index: 1; /* Để đặt nút lên trên ảnh */
+}
+
+.image-container:hover button-img {
+display: block !important;
+}
+.custom-avatar-img{
+  margin-top: 100px !important;
+
+}
+
+
+.custom-form-info{
+  margin-top: -100px !important;
+}
+.customer-title{
+  margin-left: 880px !important;
+  margin-top: 30px !important;
+}
+
+.is-valid {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLhskW7o8UB4SqQT4hAHrN5ix7V5mAFKGuZaW5K4cGtA&s");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+
+
+.not-valid {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8ZNXO_r4N4sFrAmYO0rCwcx6RRxvoSy0YiFNsG4CqQ&s");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.325rem) center;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem);
+}
+
+
+
+.display-calendar {
+  border-color: #1BC5BD;
+  padding-right: calc(1.5em + 1.3rem);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokYvMFzwfCX1EXpkzQtlS5Z5Cokag_CDsnF_jIhH2Gg&s") !important;
+  background-repeat: no-repeat !important;
+  background-position: right calc(0.375em + 0.325rem) center !important;
+  background-size: calc(0.75em + 0.65rem) calc(0.75em + 0.65rem) !important;
+}
+.cumstom-gender{
+  margin-top: -35px !important;
+}
+
+
+

@@ -1,0 +1,55 @@
+<div class="form-group row">
+  <div class="col-lg-6">
+    <div class="d-flex flex-row">
+    <label  style="font-weight: bold" >Categories Apply ({{showCategoris}}) </label>
+  </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="d-flex flex-row custom-btn-add">
+    <button (click)="create()" type="button" class="btn btn-primary">
+      Create +
+    </button>
+  </div>
+</div>
+</div>
+<div class="overlay overlay-block table-responsive angular-bootstrap-table">
+  <table
+    class="table table-head-custom table-vertical-center overflow-hidden table-nowrap"
+  >
+    <thead>
+      <th class="selection-cell-header" data-row-selection="true">
+        <label class="checkbox  checkbox-single"
+          ><input class="custom-checkbox" [disabled]="disableCategory"
+            type="checkbox"
+            (click)="grouping.selectAllRows(); checkSeletedAll()"
+            [checked]="grouping.checkAreAllRowsSelected()"
+          /><span></span
+        ></label>
+      </th>
+      <th class="width-150">Thumail</th>
+      <th class="width-150">Title</th>
+      <th class="width-150">Description</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of service.items$ | async">
+        <td class="selection-cell">
+          <label class="checkbox checkbox-single"
+            ><input [disabled]="disableCategory"
+              type="checkbox"
+              (click)="grouping.selectRow(record.id); checkSelectd(record.id)"
+              [checked]="listCategory.includes(record.id)"
+            />
+            <span></span>
+          </label>
+        </td>
+        <td class="width-30">
+          <img class="size-img" [src]="record.thumbail" alt="" />
+        </td>
+        <td class="width-150">
+          <span class="link-info-game">{{ record.labelName }}</span>
+        </td>
+        <td class="width-150">{{ record.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

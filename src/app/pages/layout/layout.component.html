@@ -1,0 +1,23 @@
+
+<!-- Layout Main / Content of Project
+                  function
+  Build  form that includes  ( header +   sidebar + footer )
+
+  Parent has task Share data / logic service Header -> Navbar ....
+
+  CSS for Global layout
+
+-->
+<app-header (isHide)="isHideSideBar($event)"></app-header>
+
+
+<main class="custom-layout">
+  <app-sidebar   [isShow]="isShow"></app-sidebar>
+
+  <ng-content></ng-content>
+</main>
+
+
+
+
+<app-footer class="custom-footer"></app-footer>

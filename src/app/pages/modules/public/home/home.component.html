@@ -1,0 +1,241 @@
+<br />
+<div class="custom-carousel-main">
+  <carousel>
+    <slide class="custom-carousel">
+      <img
+        src="https://tothost.vn/wp-content/uploads/2023/12/Angular-Framework_cover.png"
+        style="display: block; width: 1000px; height: 450px"
+      />
+    </slide>
+    <slide class="custom-carousel">
+      <img
+        src="https://lh7-us.googleusercontent.com/iLfZJxqo05Yvg2OOuJbS0dpWRwNeoa8KduJRKnE9Cssq7lT2sOmxM_wqRnGd2fiWGSU44lz5rr5GyO_Vj9suH3Oza_eE8ovYVVbY867j7unVV5uPiPm0uL0CiO-gkp6NcG4rOnacgD0vvoaubu4gL0MWngnpY5GZ"
+        alt="first slide"
+        style="display: block; width: 1000px; height: 450px"
+      />
+    </slide>
+    <slide class="custom-carousel">
+      <img
+        src="https://media.geeksforgeeks.org/wp-content/uploads/20231009182919/Angular-PrimeNG-copy.webp"
+        style="display: block; width: 1000px; height: 450px"
+      />
+    </slide>
+  </carousel>
+</div>
+
+<form class="custom-form-filter" [formGroup]="filterGroup">
+  <div class="form-group row custom-filter">
+    <div class="col-lg-3">
+      <div class="d-flex flex-row">
+        <label> Filter By </label>
+      </div>
+      <ng-select
+        placeholder="All"
+        formControlName="categories"
+        [multiple]="true"
+      >
+        <ng-option *ngFor="let item of categories" [value]="item.id">{{
+          item.labelName
+        }}</ng-option>
+      </ng-select>
+    </div>
+    <div class="col-lg-3">
+      <div class="d-flex flex-row">
+        <label> Sort By </label>
+      </div>
+      <ng-select
+        placeholder="All"
+        formControlName="sort"
+        [multiple]="false"
+      >
+        <ng-option *ngFor="let item of sortList" [value]="item.value">{{
+          item.labelName
+        }}</ng-option>
+      </ng-select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-lg-12 input-group custom-search custom-search-main">
+      <div class="input-group-prepend">
+        <button type="button" class="btn btn-seccess custom-btn-search">
+          <i class="fas fa-search custom-icon-search"></i>
+        </button>
+      </div>
+      <input
+        formControlName="search"
+        type="text"
+        class="form-control"
+        placeholder="Search "
+        value=""
+        name="searchText"
+      />
+    </div>
+  </div>
+</form>
+
+<main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>List Post</strong></h4>
+
+      <ng-container *ngIf="(this.service.items$ | async)!.length < 1">
+          <p> Not Data </p>
+      </ng-container>
+
+      <div class="row">
+      <ng-container *ngFor="let items of this.service.items$ | async">
+          <div class="col-lg-3 col-md-12 mb-6">
+            <div class="card custom-card">
+              <div
+                class="avatar-container cursor-pointer d-flex align-items-center justify-content-center"
+                data-mdb-ripple-color="light"
+              >
+                <img
+                  src= {{items.image}}
+                  style="max-height: 150px;  min-width: 260px;"
+                />
+                <a (click)="view(items.id)" >
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{items.title}}</h5>
+                <p class="card-text">
+                 {{ items.content  }}
+                </p>
+                <a (click)="view(items.id)" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+        </div>
+      </ng-container>
+    </div>
+
+
+    </section>
+    <!--Section: Content-->
+
+    <!-- Pagination -->
+    <nav class="my-4" aria-label="...">
+      <app-paginator
+      [paginator] = "(paginator | async)!"
+      [isLoading]="false"
+      (paginate)="paginate($event)"
+      ></app-paginator>
+    </nav>
+  </div>
+  <section class="mt-5 mb-4">
+    <div class="container text-dark">
+      <header class="mb-4">
+        <h3>Blog posts</h3>
+      </header>
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <article>
+            <a routerLink="/blog/1" class="img-fluid">
+              <img
+                class="rounded w-100"
+                src="https://lacoski.github.io/media/rabbitmq.png"
+                style="object-fit: cover"
+                height="160"
+              />
+            </a>
+            <div class="mt-2 text-muted small d-block mb-1">
+              <span>
+                <i class="fa fa-calendar-alt fa-sm"></i>
+                5.5.2024
+              </span>
+              <a routerLink="/blog/1">
+                <h6 class="text-dark">Rabbit MQ </h6>
+              </a>
+              <p>
+                When you enter into any new area of science, you almost reach
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <article>
+            <a routerLink="/blog/1" class="img-fluid">
+              <img
+                class="rounded w-100"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzXJcGnCKGjXGtmqpqxwVAJg_VL8aLWKg4tmNFlxn1iA&s"
+                style="object-fit: cover"
+                height="160"
+              />
+            </a>
+            <div class="mt-2 text-muted small d-block mb-1">
+              <span>
+                <i class="fa fa-calendar-alt fa-sm"></i>
+                5.5.2024
+              </span>
+              <a routerLink="/blog/1">
+                <h6 class="text-dark"> How to config RabbitMQ </h6>
+              </a>
+              <p>
+                When you enter into any new area of science, you almost reach
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <article>
+            <a routerLink="/blog/1" class="img-fluid">
+              <img
+                class="rounded w-100"
+                src="https://easyinvoice.vn/wp-content/uploads/2021/12/cuc-thue-HCM-phoi-hop-voi-softdream-to-chuc-hoi-thao.png"
+                style="object-fit: cover"
+                height="160"
+              />
+            </a>
+            <div class="mt-2 text-muted small d-block mb-1">
+              <span>
+                <i class="fa fa-calendar-alt fa-sm"></i>
+                5.5.2024
+              </span>
+              <a routerLink="/blog/1">
+                <h6 class="text-dark">SoftDream App </h6>
+              </a>
+              <p>
+                When you enter into any new area of science, you almost reach
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+          <article>
+            <a routerLink="/blog/1" class="img-fluid">
+              <img
+                class="rounded w-100"
+                src="https://media.licdn.com/dms/image/D4E16AQGOtm4ej4WV9g/profile-displaybackgroundimage-shrink_200_800/0/1686211095391?e=2147483647&v=beta&t=SBmsU09xtLNXmj4Q6_lrB83vi7ayOlzndBsaNmxvkTg"
+                style="object-fit: cover"
+                height="160"
+              />
+            </a>
+            <div class="mt-2 text-muted small d-block mb-1">
+              <span>
+                <i class="fa fa-calendar-alt fa-sm"></i>
+                5.5.2024
+              </span>
+              <a routerLink="/blog/1">
+                <h6 class="text-dark">Easy Book with SoftDreams</h6>
+              </a>
+              <p>
+                When you enter into any new area of science, you almost reach
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
